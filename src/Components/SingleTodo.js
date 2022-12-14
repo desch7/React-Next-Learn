@@ -3,31 +3,36 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faCircleCheck,
+    faCircleXmark,
 	faPen,
 	faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
-const ToDo = ({ toDo, markDone, setUpdateData, deleteTask }) => {
+const SingleTodo = ({ task, markDone, setUpdateData, deleteTask }) => {
 	return (
-		<>
-			{toDo &&
-				toDo
-					.sort((a, b) => (a.id > b.id ? 1 : -1))
-					.map((task, index) => {
-						return (
-							<React.Fragment key={task.id}>
+							<React.Fragment >
 								<div className="col taskBg">
-									<div className={task.status ? "done" : ""}>
+									<div>
 										<br />
 										<span className="taskText">{task.title}</span>
 									</div>
 									<div className="iconsWrap">
-										<span
+
+                                        {task.status ? (
+                                            <span 
+											title="Completed / Not Completed"
+											onClick={(e) => markDone(task.id)}
+										>
+											<FontAwesomeIcon icon={faCircleXmark} />
+										</span>
+                                        ) : (
+                                            <span 
 											title="Completed / Not Completed"
 											onClick={(e) => markDone(task.id)}
 										>
 											<FontAwesomeIcon icon={faCircleCheck} />
 										</span>
+                                        )}
 
 										{task.status ? null : (
 											<span
@@ -50,10 +55,8 @@ const ToDo = ({ toDo, markDone, setUpdateData, deleteTask }) => {
 									</div>
 								</div>
 							</React.Fragment>
-						);
-					})}
-		</>
+						
 	);
 };
 
-export default ToDo;
+export default SingleTodo;

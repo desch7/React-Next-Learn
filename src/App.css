@@ -74,3 +74,13 @@ body {
 .mr-20 {
   margin-right: 20px;
 }
+
+.navItem{
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.navBar{
+  margin-top: 5px;
+  margin-right: 10px;
+}
